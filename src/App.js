@@ -10,7 +10,10 @@ import received_files from './components/received_files';
 import project from './components/project';
 import project_files from './components/project_files';
 import share_file from './components/share_file';
-import home from './components/home';
+import profile from './components/profile';
+import test from './components/test';
+
+// import home from './components/home';
 
 
 
@@ -49,7 +52,10 @@ render(){
            <Route path="/project" component={project} exact/>
            <Route path="/share_file" component={share_file} exact/>
            <Route path="/project/:projectaddr" component={project_files} exact/>
-           <Route path="/home" component={home} exact/>
+           <Route path="/profile/:username" component={profile} exact/>
+           <Route path="/test" component={test} exact/>
+
+
 
          </Switch>
       </div>

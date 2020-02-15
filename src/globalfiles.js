@@ -1,0 +1,4 @@
+import web3 from "./web3";
+const address = "0x8c011Ee8395B612ae9777f4D3D8354aAE84519E6";
+const abi = [{"constant":false,"inputs":[{"name":"msgg","type":"string"}],"name":"addinglobalrequests","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"ipfsha","type":"string"},{"name":"user","type":"address"},{"name":"ftype","type":"string"}],"name":"addinfilearray","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getglobalrequests","outputs":[{"name":"","type":"string[]"},{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getfilearray","outputs":[{"name":"","type":"string[]"},{"name":"","type":"address[]"},{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"}];
+export default new web3.eth.Contract(abi, address);

@@ -1,0 +1,52 @@
+{
+  "name": "hack36_2k20",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "assert": "^2.0.0",
+    "bootstrap": "^4.4.1",
+    "crypto-js": "^4.0.0",
+    "file-saver": "^2.0.2",
+    "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0",
+    "ganache-cli": "^6.9.0",
+    "ipfs-api": "^26.1.2",
+    "jsencrypt": "^3.0.0-rc.1",
+    "mocha": "^7.0.1",
+    "node-forge": "^0.9.1",
+    "quick-encrypt": "^1.0.8",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "reactstrap": "^8.4.1",
+    "solc": "^0.4.17",
+    "truffle-hdwallet-provider": "0.0.3",
+    "web3": "^1.0.0-beta.26"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
