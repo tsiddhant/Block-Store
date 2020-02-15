@@ -10,6 +10,7 @@
 * User can upload file of any size(no restriction of 15 Gb like google drive).
 * Cost of uploading file does not depends on the size of file rather it depends on the number of files.
 * Users can search and view other users profile.
+* Easy navigation through files and folders in project and user files.
 
 ### Team Collaborator/Project Manager ::
 * Utilize the power of IPFS to share important files among your team members through a fully decentralized system.
