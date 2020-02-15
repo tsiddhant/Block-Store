@@ -167,7 +167,8 @@ export default class project_files extends Component {
         <th>File Name</th>
         <th>File Address</th>
         <th>Is File</th>
-        <th>Status</th>
+        <th>Share</th>
+        <th>Delete</th>
       </tr>
     );
     this.setState({ showfiles: filetable });
@@ -183,6 +184,8 @@ export default class project_files extends Component {
                 onClick={() =>
                   this.download_file(this.state.projectfiles["0"][i])
                 }
+                type="button"
+                   className="text-capitalize text-primary"
               >
                 {this.state.projectfiles["2"][i]}
               </a>
@@ -197,14 +200,17 @@ export default class project_files extends Component {
               >
                 Share
               </Button>
+              </td>
               <td>
-                <button
+                <Button
+                className="btn-sm-round"
+                color="primary"
                   onClick={() => this.deletefile(this.state.userfiles["0"][i])}
                 >
                   Delete
-                </button>
+                </Button>
               </td>
-            </td>
+
           </tr>
         );
       } else {
@@ -216,6 +222,8 @@ export default class project_files extends Component {
                 onClick={() =>
                   this.opendirectory(this.state.projectfiles["0"][i])
                 }
+                type="button"
+                   className="text-capitalize text-primary"
               >
                 {this.state.projectfiles["2"][i]}
               </a>
@@ -224,11 +232,13 @@ export default class project_files extends Component {
             <td>{this.state.fileis}</td>
             <td></td>
             <td>
-              <button
+              <Button
+              className="btn-sm-round"
+              color="primary"
                 onClick={() => this.deletefile(this.state.userfiles["0"][i])}
               >
                 Delete
-              </button>
+              </Button>
             </td>
           </tr>
         );
@@ -241,32 +251,34 @@ export default class project_files extends Component {
      console.log(pathdir);
      const nodeobj=await projobj.methods.nodeStructs(pathdir).call({from:accounts[0]});
      var dirname=nodeobj['name'];
-     tempdir.push(<div><a value={pathdir} onClick={this.todirectory} >{dirname}</a></div>);
+     tempdir.push(<span><a value={pathdir} className="text-primary" type="button" onClick={this.todirectory} >{dirname}/</a></span>);
      pathdir=nodeobj['parent'];
    }while(pathdir!=0);
    tempdir.reverse();
    this.setState({path:tempdir});
 
 
+
+   const projectchats=await projobj.methods.getprojectchats().call({from:accounts[0]});
+      this.setState({projectchats:projectchats});
+      this.setState({showchats:[]})
+      var chattable=this.state.showchats;
+      chattable.push(<tr><th>Message</th><th>Sender</th></tr>);
+      this.setState({showchats:chattable});
+      console.log(this.state.projectchats);
+     //  this.setState({projectchats:projectchats});
+   // console.log(this.state.projectchats['0'].length);
+       //  var chattable=this.state.showchats;
+
+      for(let j=0;j<this.state.projectchats['0'].length;++j)
+      {
+        chattable.push(<tr><td>{this.state.projectchats['0'][j]}</td><td>{this.state.projectchats['1'][j]}</td></tr>);
+        this.setState({showchats:chattable});
+      }
+
    window.sessionStorage.setItem(this.state.project,this.state.directory);
    console.log(this.state.directory);
 
-   const projectchats=await projobj.methods.getprojectchats().call({from:accounts[0]});
-   this.setState({projectchats:projectchats});
-   this.setState({showchats:[]})
-   var chattable=this.state.showchats;
-   chattable.push(<th><td>Message</td><td>Sender</td></th>);
-   this.setState({showchats:chattable});
-   console.log(this.state.projectchats);
-  //  this.setState({projectchats:projectchats});
-// console.log(this.state.projectchats['0'].length);
-    //  var chattable=this.state.showchats;
-
-   for(let j=0;j<this.state.projectchats['0'].length;++j)
-   {
-     chattable.push(<tr><td>{this.state.projectchats['0'][j]}</td><td>{this.state.projectchats['1'][j]}</td></tr>);
-     this.setState({showchats:chattable});
-   }
 
   //  window.sessionStorage.setItem(this.state.project,this.state.directory);
   //  console.log(this.state.showchats);
@@ -452,86 +464,105 @@ this.getfiles();
 
 }
 
+addchat =async(e)=>{
+  e.preventDefault();
+  const accounts=await web3.eth.getAccounts();
+  const projobj = await new web3.eth.Contract(projectabi, this.state.project);
+  await projobj.methods.addprojectchat(this.state.chat).send({
+    from:accounts[0],
+    message:this.state.chat
 
+  });
+this.getfiles();
+
+}
 
 render(){
     return (
       <div className="App">
           <div className="navbar-section">
             <Navbar bg="dark" variant="dark">
-              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-              <Nav className="ml-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Navbar.Brand href="/dashboard">Block-Store</Navbar.Brand>
+            <Nav className="ml-auto">
+            <Nav.Link href="/dashboard">Home</Nav.Link>
+            <Nav.Link href="/project">Projects</Nav.Link>
+            <Nav.Link href="/files">Files</Nav.Link>
               </Nav>
             </Navbar>
           </div>
           {/* <h4> Ethereum and IPFS with Cre React App</h1> */}
-          <div style={{ margin: "7% 0%" }}>
+          <h3 className="font-weight-bold mt-5 text-center">Project Files</h3>
+          <div style={{marginLeft:'18%'}}>
+            <a type="button" className="text-capitalize" style={{textDecoration:'none',float:'left',fontSize:'18px'}}>{this.state.path}</a>
+          </div>
+          <div class="main-pge">
+          <Row>
+          <Col style={{ margin: "5% 3%" }}>
+               <Row>
+                <Col lg="6">
+                <Form onSubmit={this.Encrypt}>
+                    <h6 style={{float:'left'}} className="my-2 mx-3">
+                        Upload File To IPFS
+                    </h6>
+                   <Form.Group>
+                    <Form.Row>
+                     <Form.Control
+                       type="file"
+                       onChange={this.captureFile}
+                       id="ipfs"
+                     />
+                     </Form.Row>
+                   </Form.Group>
+                   <Button className="btn-sm-round my-2" color="primary">
+                     Add File
+                   </Button>
+                </Form>
+                </Col>
+                <Col lg="6">
+                <Form onSubmit={this.addfolder}>
+                  <div>
+                  <h6 style={{float:'left'}} className="my-2 mx-2">Enter Folder Name</h6>
+                  </div>
+                  <Row>
+                  <Form.Group>
+                    <Form.Control
+                      value={this.state.folder}
+                      onChange={event =>
+                        this.setState({ folder: event.target.value })
+                      }
+                    />
+                    <Button className="btn-sm-round my-3" style={{position:'relative',marginLeft:'12%'}}  color="primary">
+                      Add Folder
+                    </Button>
+                  </Form.Group>
+                  </Row>
+                </Form>
+                </Col>
+              </Row>
+          </Col>
+        </Row>
             <Row>
               <Col
-                className="lg-6"
-                style={{ borderRight: "1px solid black", padding: "0% 3%" }}
+                className="table-sec"
               >
-                <Row>
-                  <h3 className="font-weight-bold my-4 mx-2 text-center">Files</h3>
-                </Row>
-                <Row>
-                  <Table hover stripped bordered responsive="lg">
-                    <tbody>{this.state.showfiles}</tbody>
-                  </Table>
-                </Row>
+                <Table hover stripped bordered responsive>
+                  <tbody>{this.state.showfiles}</tbody>
+                </Table>
               </Col>
-              <Col className="lg-6" style={{ padding: "5% 8%" }}>
-                <Card style={{ padding: "7% 5%" }}>
-                  <Card.Body>
-                    <Form onSubmit={this.Encrypt}>
-                      <h7 style={{ float: "left" }} className="my-2">
-                        Upload File To IPFS
-                      </h7>
-
-                      <Form.Group as={Col}>
-                        <Form.Control
-                          type="file"
-                          onChange={this.captureFile}
-                          id="ipfs"
-                        />
-                      </Form.Group>
-
-                      <Button
-                        className="btn-sm-round my-4"
-                        style={{ position: "relative", left: "34%" }}
-                        color="primary"
-                      >
-                        Add File
-                      </Button>
-                    </Form>
-
-                    <Form onSubmit={this.addfolder}>
-                      <h7 style={{ float: "left" }} className="my-2">
-                        Enter Folder Name
-                      </h7>
-                      <Form.Group>
-                        <Form.Control
-                          value={this.state.folder}
-                          onChange={event =>
-                            this.setState({ folder: event.target.value })
-                          }
-                        />
-                      </Form.Group>
-                      <Button
-                        className="btn-sm-round"
-                        style={{ position: "relative", left: "34%" }}
-                        color="primary"
-                      >
-                        Add Folder
-                      </Button>
-                    </Form>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
+              </Row>
+              <div>
+                            <form onSubmit={this.addchat}>
+                              <h5 className="my-4">Type message here</h5>
+                              <div>
+                              <input value={this.state.chat} onChange={event=>this.setState({ chat : event.target.value})}></input>
+                              </div>
+                              <Button className="nbtn-round my-4" color="primary">Send message</Button>
+                            </form>
+                              <h5 className="my-4">Project Chat Area</h5>
+                            <Table bordered stripped hover>
+                            {this.state.showchats}
+                            </Table>
+                            </div>
           </div>
         </div>
       );

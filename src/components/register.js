@@ -13,23 +13,24 @@ const quickEncrypt=require('quick-encrypt');
 
 
 export default class register extends Component {
-
-  state={
+ constructor(props) {
+     super(props);
+this.state={
     name:'',
     username:'',
     message:'',
     publickey :'',
     privatekey : '',
-
-
   }
+
+}
 
 
   async componentDidMount(){
     const accounts=await web3.eth.getAccounts();
 
       const deployedAddress=await main.methods.userdetails(accounts[0]).call();
-    
+
       if(deployedAddress!=0)
         window.location.href="/dashboard";
 }
@@ -79,11 +80,11 @@ export default class register extends Component {
    window.location.href="/dashboard";
 
  };
- render() {
+render() {
      return(
 
        <div className="App">
-         <check_login/>
+         <check_login />
            <div className="register-page">
              <Form className="register-form px-5" onSubmit={this.userSubmit}>
                <h4 className="text-center my-5 font-weight-bold">Register</h4>

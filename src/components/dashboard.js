@@ -145,6 +145,8 @@ window.location.reload();
 }
 
 
+
+
 searchuser=async(e)=>{
   e.preventDefault();
   const accounts=await web3.eth.getAccounts();
@@ -173,20 +175,20 @@ render(){
       <div className="App">
         <div className="navbar-section">
           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand href="/dashboard">Navbar</Navbar.Brand>
             <Nav className="ml-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="/dashboard">Home</Nav.Link>
+              <Nav.Link href="/project">Projects</Nav.Link>
+              <Nav.Link href="/files">Files</Nav.Link>
             </Nav>
           </Navbar>
         </div>
         <div style={{ margin: "0% 16%" }}>
           <h3 className="my-5" style={{ float: "left" }}>
-            Dashboard
+              Dashboard
           </h3>
         </div>
-        <Form onSubmit={this.searchuser}>
+        <Form onSubmit={this.searchuser} style={{marginLeft:'30%',marginRight:'15%',marginTop:'7%'}}>
           <Form.Group>
             <Form.Control
               value={this.state.searchusername}
@@ -232,7 +234,23 @@ render(){
                     href="/project"
                     style={{ textDecoration: "none", float: "left" }}
                   >
-                    My Project
+                    My Projects
+                  </a>
+                </ListGroup.Item>
+                <ListGroup.Item as="li">
+                  <a
+                    href="/files"
+                    style={{ textDecoration: "none", float: "left" }}
+                  >
+                    My Files
+                  </a>
+                </ListGroup.Item>
+                <ListGroup.Item as="li">
+                  <a
+                    href="/share_file"
+                    style={{ textDecoration: "none", float: "left" }}
+                  >
+                    Share File
                   </a>
                 </ListGroup.Item>
               </ListGroup>
@@ -292,11 +310,12 @@ render(){
           </Row>
         </div>
         <Row style={{ margin: "7% 17%" }}>
-          <h5 className="text-lead">All requests</h5>
+          <h5 className="text-lead">All project requests</h5>
           <Table bordered stripped hover responsive>
             {this.state.showrequests}
           </Table>
         </Row>
+
       </div>
     );
   }

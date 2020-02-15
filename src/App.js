@@ -12,8 +12,7 @@ import project_files from './components/project_files';
 import share_file from './components/share_file';
 import profile from './components/profile';
 import test from './components/test';
-
-// import home from './components/home';
+import home from './components/home';
 
 
 
@@ -54,6 +53,8 @@ render(){
            <Route path="/project/:projectaddr" component={project_files} exact/>
            <Route path="/profile/:username" component={profile} exact/>
            <Route path="/test" component={test} exact/>
+           <Route path="/home" component={home} exact/>
+
 
 
 

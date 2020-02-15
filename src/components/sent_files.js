@@ -194,11 +194,11 @@ render() {
         {/* <h1> Ethereum and IPFS with Cre React App</h1> */}
         <div className="navbar-section">
           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-            <Nav className="ml-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Navbar.Brand href="/dashboard">Block-Store</Navbar.Brand>
+          <Nav className="ml-auto">
+          <Nav.Link href="/dashboard">Home</Nav.Link>
+          <Nav.Link href="/project">Projects</Nav.Link>
+          <Nav.Link href="/files">Files</Nav.Link>
             </Nav>
           </Navbar>
         </div>

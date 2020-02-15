@@ -7,7 +7,7 @@ import "../assets/css/dashboard.css";
 import "../assets/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
-// import { Player } from "video-react";
+import { Player } from "video-react";
 import { Container, Input } from "reactstrap";
 import $ from "jquery";
 import VideoThumbnail from "react-video-thumbnail";
@@ -131,10 +131,6 @@ class Dashboard extends Component {
     } catch (error) {
       this.setState({ message2: "File Could Not Be Send..." });
     }
-    await this.textFiles();
-    await this.pdfFiles();
-    await this.imageFiles();
-    await this.videoFiles();
   };
   fileSubmitAnony = async (event) => {
     event.preventDefault();
@@ -168,10 +164,6 @@ class Dashboard extends Component {
     } catch (error) {
       this.setState({ message2: "File Could Not Be Send..." });
     }
-    await this.textFiles();
-    await this.pdfFiles();
-    await this.imageFiles();
-    await this.videoFiles();
   };
 
   loadPdf = () => {
@@ -199,8 +191,8 @@ class Dashboard extends Component {
               top
               width="100%"
               height="200"
-              src="../assets/img/pdf.png"
-              alt="Pdf"
+              src={lin}
+              alt="Card image cap"
             />
             <CardFooter>
               <h5>{usr}</h5>
@@ -239,7 +231,7 @@ class Dashboard extends Component {
               width="100%"
               height="200"
               src={lin}
-              alt="Images"
+              alt="Card image cap"
             />
             <CardFooter>
               <h5>{usr}</h5>
@@ -260,7 +252,7 @@ class Dashboard extends Component {
         <div class="carousel__item js-carousel-item">
           <Card>
             <CardBody>
-              <h5>Videos</h5>
+              <h5>No video Availabale</h5>
             </CardBody>
           </Card>
         </div>
@@ -276,6 +268,7 @@ class Dashboard extends Component {
             <VideoThumbnail
               videoUrl={lin}
               thumbnailHandler={thumbnail => console.log(thumbnail)}
+
             />
             <CardFooter>
               <h5>{usr}</h5>
@@ -330,7 +323,7 @@ class Dashboard extends Component {
   };
   async componentDidMount() {
     await this.getfiles();
-    // addResponseMessage("Welcome to this awesome chat!");
+    addResponseMessage("Welcome to this awesome chat!");
     $(".js-carousel").each(function() {
       var $carousel = $(this),
         $carouselContainer = $carousel.find(".js-carousel-container"),
@@ -387,15 +380,28 @@ class Dashboard extends Component {
     return (
       <div class="wrapper" style={{ fontFamily: "sans-serif" }}>
         <div className="page">
-        <div className="navbar-section">
-          <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/dashboard">Block-Store</Navbar.Brand>
-          <Nav className="ml-auto">
-          <Nav.Link href="/dashboard">Home</Nav.Link>
-          <Nav.Link href="/project">Projects</Nav.Link>
-          <Nav.Link href="/files">Files</Nav.Link>
-            </Nav>
-          </Navbar>
+          <div className="navig">
+            <Navbar bg="primary" variant="dark" sticky="top">
+              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+              <Nav className="ml-auto">
+                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>{" "}
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#features">Features</Nav.Link>
+              </Nav>
+              <Form inline></Form>
+            </Navbar>
             {/* <div className="desc-sect">
 
             </div> */}
@@ -539,12 +545,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-          <Widget
-              handleNewUserMessage={this.handleNewUserMessage}
-              //profileAvatar={logo}
-              title="Requests Box"
-              subtitle="Ask Anything"
-            />
+
         </div>
       </div>
     );

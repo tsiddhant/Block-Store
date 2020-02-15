@@ -1,11 +1,20 @@
 .header {
+  margin:7% 10%;
   padding: 7% 15%;
 }
 .upper-section
 {
   width:100%;
-  height:2000px;
-  background-image:url("../img/header.jpg");
+
+}
+.desc-sect
+{
+   height:44vw;
+}
+img
+{
+  height:200px !important;
+  width:60% !important;
 }
 .image-sel {
   background-size: cover;
@@ -28,6 +37,7 @@ video.video-react-video {
  }
  .video-react-progress-control,.video-react-fullscreen-control{
     display:none;
+
  }
  .video-react-duration span{
     display:none;
@@ -55,7 +65,7 @@ video.video-react-video {
     font-size: 18px;
     text-decoration: none;
     -webkit-border-radius: 28;
-    -moz-border-radius: 28; 
+    -moz-border-radius: 28;
      border-radius: 28px;
      background: #00BCD4;
 }
@@ -63,7 +73,7 @@ video.video-react-video {
 .rcw-conversation-container > .rcw-header {
    background-color: red;
  }
- 
+
  .rcw-message > .rcw-response {
    background-color: black;
    color: white;
@@ -72,3 +82,42 @@ video.video-react-video {
  .rcw-message {
    font-size: small;
  }
+
+
+
+ .carousel{
+	padding: 0 30px;
+}
+.carousel__button--prev, .carousel__button--next{
+  position: absolute;
+  top:45%;
+  /* top:0;
+  bottom:0; */
+}
+.carousel__button--prev{
+	left: 0;
+}
+.carousel__button--next{
+	right: 0;
+}
+.carousel__container {
+	overflow: hidden;
+	height: 350px;
+}
+.carousel__list{
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+}
+.carousel__list.unwrap{
+	flex-wrap: nowrap;
+}
+.carousel__item{
+	flex: 1 0 250px;
+/* 	max-width: 300px; */
+	height: 200px;
+	background-color: #ccc;
+	text-align: center;
+	line-height: 100px;
+	border: 1px solid #fff;
+}
