@@ -13,6 +13,8 @@ import share_file from './components/share_file';
 import profile from './components/profile';
 import test from './components/test';
 import home from './components/home';
+import certify from './components/certify';
+import mycerti from './components/mycerti';
 
 
 
@@ -54,6 +56,8 @@ render(){
            <Route path="/profile/:username" component={profile} exact/>
            <Route path="/test" component={test} exact/>
            <Route path="/home" component={home} exact/>
+           <Route path="/profile/certify/:recepient" component={certify} exact/>
+           <Route path="/mycerti" component={mycerti} exact/>
 
 
 

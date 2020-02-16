@@ -188,7 +188,7 @@ render(){
               Dashboard
           </h3>
         </div>
-        <Form onSubmit={this.searchuser} style={{marginLeft:'30%',marginRight:'15%',marginTop:'7%'}}>
+        <Form onSubmit={this.searchuser} style={{marginLeft:'50%',marginRight:'20%',marginTop:'7%'}}>
           <Form.Group>
             <Form.Control
               value={this.state.searchusername}

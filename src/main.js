@@ -1,5 +1,5 @@
 import web3 from "./web3";
 // const address = "0x743e25a97D47904427b81a4EE2c9af0fF3984F4D";
-const address = "0x6306A2e9965e21453eF562A65d87624adF6E4EEb";
+const address = "0x17b3695E433f5b33ED79394dd059B11a759b578A";
 const abi = [{"constant":true,"inputs":[],"name":"getUsers","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"project","type":"address"},{"name":"teamleader","type":"address"}],"name":"addproject","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"usr","type":"string"},{"name":"nm","type":"string"},{"name":"pubkey","type":"string"},{"name":"privkey","type":"string"}],"name":"createUser","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"userdetails","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"projectdetails","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
 export default new web3.eth.Contract(abi, address);

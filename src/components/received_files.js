@@ -46,7 +46,6 @@ export default class received_files extends Component {
    this.setState({userfiles:userfiles});
    this.setState({showfiles:[]})
    var filetable=this.state.showfiles;
-   filetable.push(<th><td>File Name</td><td>File Address</td><td>Sender</td></th>);
    this.setState({showfiles:filetable});
    console.log(userfiles);
    var filetable = this.state.showfiles;
@@ -55,6 +54,7 @@ export default class received_files extends Component {
         <th>File Name</th>
         <th>File Address</th>
         <th>Sender</th>
+        <th>Share</th>
       </tr>
     );
     this.setState({ showfiles: filetable });

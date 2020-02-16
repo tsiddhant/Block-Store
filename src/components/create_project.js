@@ -55,11 +55,11 @@ export default class create_project extends Component {
    let keys=quickEncrypt.generate(2048);
    this.setState({publickey:keys.public});
    this.setState({privatekey:keys.private});
-   await userobj.methods.createproject(this.state.projectname,"0x6306A2e9965e21453eF562A65d87624adF6E4EEb",this.state.publickey,this.state.privatekey).send(
+   await userobj.methods.createproject(this.state.projectname,"0x17b3695E433f5b33ED79394dd059B11a759b578A",this.state.publickey,this.state.privatekey).send(
    {
           from:accounts[0],
           projectname:this.state.projectname,
-          mainaddr:"0x6306A2e9965e21453eF562A65d87624adF6E4EEb",
+          mainaddr:"0x17b3695E433f5b33ED79394dd059B11a759b578A",
           pubkey:this.state.publickey,
           privkey:this.state.privatekey
    });

@@ -29,7 +29,8 @@ export default class profile extends Component {
     privatekey:'',
     username:'',
     usernamename:'',
-    usernameadd:''
+    usernameadd:'',
+    faltu:''
   }
 
 
@@ -104,7 +105,8 @@ export default class profile extends Component {
      );
    }
    }
-   this.setState({ showprojects: projecttable });
+   var aa = "certify/" + this.state.usernameadd;
+   this.setState({ showprojects: projecttable , faltu:aa});
  }
 
  render() {
@@ -137,6 +139,9 @@ export default class profile extends Component {
          <div style={{margin:'7% 15%'}}>
          <h5 class="font-weight-bold my-4">Common Projects</h5>
          <Table bordered stripped hover>{this.state.showprojects}</Table>
+         </div>
+         <div>
+         <a href ={this.state.faltu}><button>Certify user</button></a>
          </div>
      </div>
    );

@@ -205,7 +205,7 @@ export default class project_files extends Component {
                 <Button
                 className="btn-sm-round"
                 color="primary"
-                  onClick={() => this.deletefile(this.state.userfiles["0"][i])}
+                  onClick={() => this.deletefile(this.state.projectfiles["0"][i])}
                 >
                   Delete
                 </Button>
@@ -235,7 +235,7 @@ export default class project_files extends Component {
               <Button
               className="btn-sm-round"
               color="primary"
-                onClick={() => this.deletefile(this.state.userfiles["0"][i])}
+                onClick={() => this.deletefile(this.state.projectfiles["0"][i])}
               >
                 Delete
               </Button>

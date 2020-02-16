@@ -7,10 +7,14 @@ import "../assets/css/dashboard.css";
 import "../assets/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
+import userAccount from '../userAccount';
 // import { Player } from "video-react";
 import { Container, Input } from "reactstrap";
 import $ from "jquery";
 import VideoThumbnail from "react-video-thumbnail";
+import pdfth from "../assets/img/pdf.png";
+import textth from "../assets/img/images.png";
+import sv from "../assets/img/front.svg";
 
 import { Widget, addResponseMessage, addUserMessage } from "react-chat-widget";
 // import logo from './logo.svg';
@@ -27,7 +31,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import { Navbar, Nav, Form, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Form, NavDropdown,Image } from "react-bootstrap";
 
 let urlipfs = "https://gateway.ipfs.io/ipfs/",
   file;
@@ -59,29 +63,35 @@ class Dashboard extends Component {
     this.setState({ videoFiles: [] });
     this.setState({ imageFiles: [] });
     for (let i = 0; i < this.state.files["0"].length; ++i) {
+      let name="Anonymous";
+      if(this.state.files["1"][i]!="0x0000000000000000000000000000000000000000")
+      {
+      const deployedAddress=await main.methods.userdetails(this.state.files["1"][i]).call();
+      const userobj = await new web3.eth.Contract(userAccount, deployedAddress);
+      name=await userobj.methods.name().call();
+      }
       var has = [];
       if (this.state.files["2"][i] == "application/pdf") {
         has.push(this.state.files["0"][i]);
-        has.push(this.state.files["1"][i]);
+        has.push(name);
         this.state.pdfFiles.push(has);
       } else if (this.state.files["2"][i] == "video/mp4") {
         has.push(this.state.files["0"][i]);
-        has.push(this.state.files["1"][i]);
+        has.push(name);
         this.state.videoFiles.push(has);
       } else if (
         this.state.files["2"][i] == "image/jpeg" ||
         this.state.files["2"][i] == "image/png"
       ) {
         has.push(this.state.files["0"][i]);
-        has.push(this.state.files["1"][i]);
+        has.push(name);
         this.state.imageFiles.push(has);
       } else {
         has.push(this.state.files["0"][i]);
-        has.push(this.state.files["1"][i]);
+        has.push(name);
         this.state.textFiles.push(has);
       }
     }
-    console.log(this.state.videoFiles);
     await this.loadText();
     await this.loadPdf();
     await this.loadImages();
@@ -131,10 +141,7 @@ class Dashboard extends Component {
     } catch (error) {
       this.setState({ message2: "File Could Not Be Send..." });
     }
-    await this.textFiles();
-    await this.pdfFiles();
-    await this.imageFiles();
-    await this.videoFiles();
+    await this.getfiles();
   };
   fileSubmitAnony = async (event) => {
     event.preventDefault();
@@ -168,10 +175,7 @@ class Dashboard extends Component {
     } catch (error) {
       this.setState({ message2: "File Could Not Be Send..." });
     }
-    await this.textFiles();
-    await this.pdfFiles();
-    await this.imageFiles();
-    await this.videoFiles();
+    await this.getfiles();
   };
 
   loadPdf = () => {
@@ -195,13 +199,9 @@ class Dashboard extends Component {
       temp.push(
         <div class="carousel__item js-carousel-item">
           <Card>
-            <CardImg
-              top
-              width="100%"
-              height="200"
-              src="../assets/img/pdf.png"
-              alt="Pdf"
-            />
+          <div style={{margin:'0 10%'}}>
+          <Image src={pdfth} fluid />
+          </div>
             <CardFooter>
               <h5>{usr}</h5>
               <Button className="btn btn-primary" color="primary" href={lin}>
@@ -234,13 +234,9 @@ class Dashboard extends Component {
       temp.push(
         <div class="carousel__item js-carousel-item">
           <Card>
-            <CardImg
-              top
-              width="100%"
-              height="200"
-              src={lin}
-              alt="Images"
-            />
+          <div style={{margin:'0 10%'}}>
+          <Image src={lin} fluid />
+          </div>
             <CardFooter>
               <h5>{usr}</h5>
               <Button className="btn btn-primary" color="primary" href={lin}>
@@ -308,13 +304,9 @@ class Dashboard extends Component {
         temp.push(
           <div class="carousel__item js-carousel-item">
             <Card>
-              <CardImg
-                top
-                width="100%"
-                height="200"
-                src={lin}
-                alt="Card image cap"
-              />
+              <div style={{margin:'0 10%'}}>
+              <Image src={textth} fluid />
+              </div>
               <CardFooter>
                 <h5>{usr}</h5>
                 <Button className="btn btn-primary" color="primary" href={lin}>
@@ -396,22 +388,13 @@ class Dashboard extends Component {
           <Nav.Link href="/files">Files</Nav.Link>
             </Nav>
           </Navbar>
-            {/* <div className="desc-sect">
 
-            </div> */}
           </div>
           <div className="upper-section">
             <Container>
-              <div className="text-center brand">
-                {/* <img
-                        alt="..."
-                        className="n-logo"
-                        //src={require("../assets/img/now-logo.png")}
-                      ></img>`0` */}
-              </div>
-              <h4 className="text-center" style={{ marginTop: "7%" }}>
-                Open Drive
-              </h4>
+            <h4 className="text-center" style={{ marginTop: "7%" }}>
+            <b>  Block Store </b>
+            </h4>
             </Container>
             {/* add files public */}
             <div style={{ float: "right", margin: "7% 0" }}>
