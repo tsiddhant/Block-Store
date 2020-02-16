@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ Block-Store
+### <Block-Store> - Hack36 2K20(Team: CodeBreakers)
+* Creating a <b>Dapp</b> based on Blockchain technologies like <b>Ethereum</b> and <b>IPFS</b>(InterPlanatary File System).
 
-## Available Scripts
+### Theme --> Smart Education
 
-In the project directory, you can run:
+### -->Features<--
 
-### `npm start`
+### Generic ::
+* Automatic login system through metamask account address.
+* User can upload file of any size(no restriction of 15 Gb like google drive).
+* Cost of uploading file does not depends on the size of file rather it depends on the number of files.
+* Users can search and view other users profile.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Team Collaborator/Project Manager ::
+* Utilize the power of IPFS to share important files among your team members through a fully decentralized system.
+* Files shared through IPFS are encrypted via <b>Advanced Encryption Standard(AES)</b> to provide total control as to who can access them.
+* Files in a project are managed in an efficient and well defined folder structure.    
+* User can start a new project and send request to other users to join so as to work in a decentralized collaborative workspace.
+* Any member of the project can access any file or folder of the project and can further share or delete it
+* Members can also chat and post their queries regarding the project.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Global and Peer-to-Peer(Encrypted) File Sharing App ::
+* Files shared between two users are easily accessible due to Blockchain technology and protected through <b>Public</b> and <b>Private</b> Keys of the users using <b>RSA</b> encryption.
+* IPFS allows for distributed storage of data that is <b>immune to altering and forgery</b>. Data stored on the IPFS network cannot be altered without changing the data identifier.
+* IPFS leads to <b>improved user experience</b> in multiple cases. Content is delivered from the closest peers that possess a copy of the content removing the single-node pressure and improving the user experience.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### -->Advantages in smart education 
+* Files ; like video tutorials, PDFs ; shared globally can be accessed by anyone without any third party restriction.
+* Friends can make groups for studying together and posting Q&A.
 
-### `npm run build`
+### Advantages of Decentralized Cloud and Blockchain ::
+* Transparency
+* Security
+* Efficiency
+* Traceability
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Comparison between currently used File Sharing Applications(eg. Google Drive & Dropbox) &  ::
+* Restrictive nature of some services as well as the more commonly understood reports of recent company <b>data leaks</b>.
+* They are <b>centralised</b> systems and data shared and stored in them can easily be censored.
+* We are using ipfs for file storing and sharing purpose which is based on <b>content addressing</b>. In case of files here , no copy of file created instead only a encrypted hash is provided to the receipent through which he can access the file.
+* IPFS being content addressed it helps in <b>lowering the bandwidth consumption</b> and faster file access.
+* User can upload their personal files that are only accessible to them (eg. certificates , important documents).
+* Using of decentralized system to store files provides the user more security as our files are at great risk if they are in the hands of a single individual (they can access our personal data and can sell it).
+* Global space where anyone can post any type of file ( pdf,video,image,txt) to share with other users.
+* Users can also <b>request for a particular content</b> file in the global space by posting a request
