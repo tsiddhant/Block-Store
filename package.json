@@ -15,7 +15,7 @@
     "ganache-cli": "^6.9.0",
     "ipfs-api": "^26.1.2",
     "jsencrypt": "^3.0.0-rc.1",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "node-forge": "^0.9.1",
     "quick-encrypt": "^1.0.8",
     "react": "^16.12.0",
